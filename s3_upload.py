@@ -6,18 +6,10 @@ def get_photo_point(path):
     s3 = s3_connection();
     
     # filename = "/ai/trial.jpg"
-    print(uuid.uuid4())
-    print("***************** ",type(uuid.uuid4())) 
     filename =  "ai/" + str(uuid.uuid4()) + "trial.jpg"
-    print(filename)
     ret = s3_put_object(s3, AWS_BUCKET_NAME, "./static/result.jpg", filename)
     if ret : 
         print("파일 저장 성공")
-        # os.remove('./static/resImgPath.jpg')
-        # os.remove('./static/result.jpg')
-        if os.path.exists("./static/resImgPath.jpg"):
-            os.remove("./static/resImgPath.jpg")
-            
         if os.path.exists("./static/result.jpg"):
             os.remove("./static/result.jpg")
     else :

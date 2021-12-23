@@ -23,10 +23,8 @@ def test():
     image = img_preprocessing.url_to_img(request.values["orgImg"])
     # print(image.shape);
 
-    resImgPath = "static/resImgPath.jpg"
-    cv2.imwrite(resImgPath, image)
     left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y = ai_func.catFaceRecog(
-        resImgPath)
+        image)
 
     left_ear_x = float(left_ear_x)
     left_ear_y = float(left_ear_y)
