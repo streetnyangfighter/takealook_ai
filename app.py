@@ -14,12 +14,8 @@ warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "hi!"
 
-
-@app.route('/test', methods=['POST'])
+@app.route('/cat/face-identify', methods=['POST'])
 def test():
     # print(request.values)
     # print(request.values["orgImg"])
@@ -57,12 +53,11 @@ def test():
     return json.dumps(data)
 
 
-@app.route('/test2', methods=['POST'])
+@app.route('/cat/similarity-scoring', methods=['POST'])
 def print_string():
 
     # 새로 등록하는 고양이 이미지 크롭
     url = request.values["url"][1:-1]
-    print(">>>>>>>>>>>> ", url)
     image = img_preprocessing.url_to_img(url)
 
     left_ear_x = float(request.values["leftEarX"])
@@ -88,12 +83,9 @@ def print_string():
     score_dict = {}
     
     for i in range(len(eval)):
-        print("**************", eval[i])
 
         s3_url = eval[i]["image"]
-        print(">>>>>>>>>>>> ", s3_url)
         image = img_preprocessing.url_to_img(s3_url)
-
 
         croppedImg = img_preprocessing.catFaceCrop(image,
                                                    eval[i]["leftEarX"], eval[i]["leftEarY"],
