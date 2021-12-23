@@ -23,7 +23,7 @@ def test():
     image = img_preprocessing.url_to_img(request.values["orgImg"])
     # print(image.shape);
 
-    left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y = ai_func.catFaceRecog(
+    left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y, filepath = ai_func.catFaceRecog(
         image)
 
     left_ear_x = float(left_ear_x)
@@ -35,7 +35,7 @@ def test():
     right_eye_x = float(right_eye_x)
     right_eye_y = float(right_eye_y)
 
-    url = s3_upload.get_photo_point("./static/result.jpg")
+    url = s3_upload.get_photo_point(filepath)
 
     data = {'url': url,
             'leftEarX': left_ear_x,

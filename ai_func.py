@@ -3,9 +3,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 from keras.layers import * 
-import os
-from keras.applications.vgg16 import VGG16
-from keras.models import Sequential
+import uuid
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -70,6 +68,7 @@ def catFaceRecog(image):
 
     def predict_image(image, model):
         img = image
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         (w, h) = img.shape[:2]
 
         # predictions
@@ -83,8 +82,6 @@ def catFaceRecog(image):
 
         plt.imshow(image)
         plt.axis('off')
-        #plt.scatter(labels[0:18:2],labels[1:18:2],c='r',)
-
 
         x,y = [],[]
         points = [CatFeatures.LEFT_EAR_1,
@@ -105,7 +102,7 @@ def catFaceRecog(image):
         plt.setp(lines, color='c',)
 
         # 점 찍은 상태의 사진 저장 -> 프론트에 전송
-        filepath = "static/result.jpg"
+        filepath = "./static/" + str(uuid.uuid4()) + "result.jpg"
         plt.savefig(filepath)
         # plt.show()
 
@@ -125,6 +122,6 @@ def catFaceRecog(image):
         right_eye_x = features[CatFeatures.RIGHT_EYE][0]
         right_eye_y = features[CatFeatures.RIGHT_EYE][1]
         
-        return left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y
+        return left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y, filepath
     
     return predict_image(image, model)
