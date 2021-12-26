@@ -87,13 +87,10 @@ def catFaceRecog(image):
 
         x,y = [],[]
         points = [CatFeatures.LEFT_EAR_1,
-                  CatFeatures.LEFT_EAR_2,
-                  CatFeatures.LEFT_EAR_3,
+                  CatFeatures.LEFT_EYE,
+                  CatFeatures.RIGHT_EYE,
                   CatFeatures.RIGHT_EAR_1,
-                  CatFeatures.RIGHT_EAR_2,
-                  CatFeatures.RIGHT_EAR_3,
-                  CatFeatures.MOUTH,
-                  CatFeatures.LEFT_EAR_1,
+                  CatFeatures.LEFT_EAR_1
                  ]
 
         for p in points:
