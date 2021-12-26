@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import boto3
 from file_manager import AWS_BUCKET_NAME, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY
 import os, uuid

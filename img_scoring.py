@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # 이진화 한 이미지 두 개 비교하여 점수 산출
 def scoring(img1, img2):
     count = 0

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import img_preprocessing
 import img_scoring
 import s3_upload
