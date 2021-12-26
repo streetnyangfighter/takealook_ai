@@ -53,6 +53,7 @@ def test():
 def print_string():
 
     # 새로 등록하는 고양이 이미지 크롭
+    url = request.values["url"]
     image = img_preprocessing.url_to_img(url)
 
     left_ear_x = float(request.values["leftEarX"])
