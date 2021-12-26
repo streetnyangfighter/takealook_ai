@@ -77,7 +77,7 @@ def print_string():
     eval = literal_eval(request.values["catList"])
 
     score_dict = {}
-    
+        
     for i in range(len(eval)):
 
         s3_url = eval[i]["image"]
