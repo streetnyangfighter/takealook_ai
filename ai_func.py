@@ -106,6 +106,7 @@ def catFaceRecog(image):
         # 점 찍은 상태의 사진 저장 -> 프론트에 전송
         filepath = "./static/" + str(uuid.uuid4()) + "result.jpg"
         plt.savefig(filepath)
+        plt.close()
         # plt.show()
 
         # 왼쪽 귀 좌표
