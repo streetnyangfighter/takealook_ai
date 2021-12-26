@@ -107,7 +107,6 @@ def catFaceRecog(image):
         filepath = "./static/" + str(uuid.uuid4()) + "result.jpg"
         plt.savefig(filepath)
         plt.close()
-        # plt.show()
 
         # 왼쪽 귀 좌표
         left_ear_x = features[CatFeatures.LEFT_EAR_1][0]

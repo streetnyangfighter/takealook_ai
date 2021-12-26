@@ -19,11 +19,7 @@ app = Flask(__name__)
 
 @app.route('/cat/face-identify', methods=['POST'])
 def test():
-    # print(request.values)
-    # print(request.values["orgImg"])
-    print("*******", request.values["orgImg"])
     image = img_preprocessing.url_to_img(request.values["orgImg"])
-    # print(image.shape);
 
     left_ear_x, left_ear_y, right_ear_x, right_ear_y, left_eye_x, left_eye_y, right_eye_x, right_eye_y, filepath = ai_func.catFaceRecog(
         image)
@@ -38,7 +34,6 @@ def test():
     right_eye_y = float(right_eye_y)
 
     url = s3_upload.get_photo_point(filepath)
-    print("*******", url)
 
     data = {'url': url,
             'leftEarX': left_ear_x,
@@ -102,12 +97,9 @@ def print_string():
         score_dict[eval[i]["id"]] = score
         
     # 스코어를 기준으로 내림차순 정렬한 key 리스트
-    # cat_id = sorted(score_dict, key = lambda x : -score_dict[x])
-    # print(cat_id)
     sorted_value = sorted(score_dict.items(), key = lambda x : x[1], reverse=True)
     sorted_dict = collections.OrderedDict(sorted_value) 
     
-    # data = {'catId': cat_id}
     data = {'sortedDict': dict(sorted_dict)}
 
     return json.dumps(data)
