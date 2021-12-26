@@ -19,7 +19,7 @@ app = Flask(__name__)
 def test():
     # print(request.values)
     # print(request.values["orgImg"])
-
+    print("*******", request.values["orgImg"])
     image = img_preprocessing.url_to_img(request.values["orgImg"])
     # print(image.shape);
 
@@ -36,6 +36,7 @@ def test():
     right_eye_y = float(right_eye_y)
 
     url = s3_upload.get_photo_point(filepath)
+    print("*******", url)
 
     data = {'url': url,
             'leftEarX': left_ear_x,
